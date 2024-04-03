@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<stdlib.h>
+int cmp(char *s1,char *s2){
+    int i=0;
+    int count=0;
+    for(i=0;s1[i]!='\0'&&s2[i]!='\0';i++){
+        if(s1[i]==s2[i]){
+            count++;
+        }
+       
+        else{
+            printf("%d",s1[i]-s2[i]);
+            break;
+        }
+        
+    }
+    
+    return count;
+}
+int main(){
+    printf("Enter two string for compare:\n");
+    char *ptr1,*ptr2;
+    ptr1=(char*)calloc(100,sizeof(char));
+    ptr2=(char*)calloc(100,sizeof(char));
+    fgets(ptr1,100,stdin);
+    fgets(ptr2,100,stdin);
+    int n1,n2;
+    for(n1=0;ptr1[n1]!='\0';n1++);
+    for(n2=0;ptr2[n2]!='\0';n2++);
+    ptr1=realloc(ptr1,n1);
+    ptr2=realloc(ptr2,n2);
+    ptr1[n1-1]='\0';
+    ptr2[n2-1]='\0';
+    int a=cmp(ptr1,ptr2);
+    if(n1==n2){
+        if(n1-1==a){
+            printf("%d",0);
+        }
+    }
+    free(ptr1);
+    free(ptr2);
+    return 0;
+}
