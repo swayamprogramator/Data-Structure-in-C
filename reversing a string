@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+   char *src;
+    src=(char*)calloc(100,sizeof(char));
+    fgets(src,100,stdin);
+    
+    char arr[100];
+    char *dest=arr;
+    
+    int i,length;
+    for(length=0;src[length]!='\0';length++);
+    for( i=0;src[i]!='\0';i++){
+        dest[i]=src[length-2-i];
+    }
+    dest[i]='\0';
+    puts(arr);
+    return 0;
+}
