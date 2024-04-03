@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<stdlib.h>
+void palindrome(char *s,int n){
+    int isp=1;
+    int i;
+    
+    
+    for(i=0;i<=n/2;i++){
+        if (s[i]!=s[n-1-i]){
+            isp=0;
+            break;
+        }
+    }
+    if (isp==1){printf("palindome");}
+    else{printf("not palindrome");}
+}
+int main(){
+    char *ptr;
+    ptr=(char*)calloc(100,sizeof(char));
+    fgets(ptr,100,stdin);
+    int n;
+    for(n=0;ptr[n]!='\0';n++);
+    ptr=realloc(ptr,n);
+    palindrome(ptr,n-1);
+    free(ptr);
+    return 0;
+}
