@@ -1,0 +1,49 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    int *arr;
+    arr=(int*)calloc(10000,sizeof(int));
+    int n;
+    printf("Enter number of element you want in array:");
+    scanf("%d",&n);
+    arr=(int*)realloc(arr,n);
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    int num;
+    printf("Enter the number which have to be search:");
+    scanf("%d",&num);
+   
+    
+    //sorting an array
+    for(int i=0;i<=n-1;i++){
+       for(int j=i+1;j<=n-1;j++){
+        if(arr[i]>arr[j]){
+            arr[i]=arr[i]^arr[j];
+            arr[j]=arr[i]^arr[j];
+            arr[i]=arr[i]^arr[j];
+        }
+       } 
+    }  
+
+    int start=0;
+    int last=n-1;
+    int mid=0;
+
+    while(start<=last){
+        mid=(start+last)/2;
+        if(arr[mid]==num){
+            printf("horray!!\nElement found in sorted array at position:%d",mid);
+            break;
+        }
+        else if(arr[mid]<num){
+            start=mid+1;
+        }
+        else{
+            last=mid-1;
+        } 
+    }
+    if(start>last){printf("Element not found!!!");}
+    free(arr);
+    return 0;
+} 
