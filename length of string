@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<stdlib.h>
+int len(char *ptr){
+    char *q=ptr;
+    while(*++ptr);
+    printf("%d",ptr-q-1);
+}
+int main(){
+    char *ptr;
+    ptr=(char*)calloc(100,sizeof(char));
+    fgets(ptr,100,stdin);
+    len(ptr);
+    free(ptr);
+    return 0;
+}
