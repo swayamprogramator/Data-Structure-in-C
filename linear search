@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+    int *arr;
+    arr=(int*)calloc(10000,sizeof(int));
+    int n;
+    printf("Enter number of element you want in array:");
+    scanf("%d",&n);
+    arr=(int*)realloc(arr,n);
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    int num;
+    printf("Enter the number which have to be search:");
+    scanf("%d",&num);
+    int i;
+    for(i=0;i<=n-1;i++){
+        if(num==arr[i]){printf("found at position:");
+        printf("%d",i);
+        }
+    }
+}
