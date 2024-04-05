@@ -1,0 +1,29 @@
+#include<stdio.h>
+void removeblank(char arr[])
+{
+	char newstr[100],faltu[100];
+	int i=0,j=0;
+	for(;arr[i]!='\0';i++,j++){
+		if(arr[i]==' '){
+			faltu[j]=arr[i];
+			j=j-1;
+		}
+		else{newstr[j]=arr[i];}
+	}
+	newstr[j]='\0';
+	faltu[j]='\0';
+	puts(newstr);
+}
+int main()
+{
+	char arr[100];
+	fgets(arr,100,stdin);
+	removeblank(arr);
+	
+	return 0;
+}
+
+
+
+
+
