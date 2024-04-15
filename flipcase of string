@@ -1,0 +1,24 @@
+#include<stdio.h>
+//flipcase of string
+void swapcase(char arr[],char newstr[])
+{
+	
+	int i=0;
+	for(;arr[i] !='\0';i++)
+	{
+		if(arr[i]==32){newstr[i]=32;}
+		if(arr[i]>=65 && arr[i]<=90){newstr[i]=arr[i]+32;}
+		if(arr[i]>=97 && arr[i]<=122){newstr[i]=arr[i]-32;}
+	}
+	
+	newstr[i]='\0';
+}
+int main()
+{
+	
+	char arr[100],newarr[100]={};
+	fgets(arr,100,stdin);
+	swapcase(arr,newarr);
+	puts(newarr);
+	return 0;
+}

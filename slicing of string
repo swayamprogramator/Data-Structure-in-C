@@ -1,0 +1,25 @@
+#include<stdio.h>
+//slicing of string
+void slicestr(char arr[],char newstr[],int start, int end)
+{
+	int j=0;
+	for(int i=start;i<end;i++,j++)
+	{
+		newstr[j]=arr[i];
+	}
+	newstr[j]='\0';
+}
+int main()
+{
+	int s,e;
+	char arr[100],newstr[100]={};
+	
+	printf("Enter string:");
+	fgets(arr,100,stdin);
+	printf("Give slicing range:");
+	scanf("%d%d",&s,&e);
+	slicestr(arr,newstr,s,e);
+	puts(newstr);
+	return 0;
+}
+	
