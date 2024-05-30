@@ -21,5 +21,8 @@ int main(){
     printf("%d\n",n1->info);
     printf("%d\n",n2->info);
     printf("%d",n3->info);
+    free(n1);
+    free(n2);
+    free(n3);
     return 0;
 }
