@@ -5,13 +5,8 @@ struct node{
     struct node *link;
     
 };
-void print(struct node *ptr){
-    while(ptr!=NULL){
-        printf("%d\n",ptr->info);
-        ptr=ptr->link;
-    }
-}
 void input(struct node *ptr){
+    printf("Enter Element:\n");
     while(ptr!=NULL){
         scanf("%d",&ptr->info);
         ptr=ptr->link;
@@ -25,6 +20,8 @@ int main(){
     n2.link=&n3;
     n3.link=NULL;
     input(start);
-    print(start);
+    printf("%d\n",n1.info);
+    printf("%d\n",n2.info);
+    printf("%d",n3.info);
     return 0;
 }
