@@ -17,9 +17,9 @@ int print(struct node *ptr) {
 
 // Function to insert an element at the lasr of the list
 
-void insert_last(struct node *start) {
+void insert_last(struct node **start) {
     struct node *new = (struct node *)malloc(sizeof(struct node));
-    struct node *p=start;
+    struct node *p=*start;
         while(p->link!=NULL){
             p=p->link;
         }
@@ -53,7 +53,7 @@ int main() {
         }
     }
     
-    insert_last(start); 
+    insert_last(&start); 
     print(start);
 
     
