@@ -1,0 +1,42 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int info;
+    struct node * link;
+};
+
+//Traversing
+void print(struct node *ptr){
+    while(ptr!=NULL){
+        printf("%d\t",ptr->info);
+        ptr=ptr->link;
+    }
+}
+
+void main(){
+    int n;
+    printf("Enter number of node you want:");
+    scanf("%d",&n);
+    struct node *start=NULL;
+    struct node *temp=NULL;
+    for (int i = 0; i < n; i++)
+    {
+        temp=(struct node*)malloc(sizeof(struct node));
+        printf("Enter element for node %d:",i+1);
+        scanf("%d",&temp->info);
+        temp->link=NULL;
+        
+        if(start==NULL){
+            start=temp;
+        }
+        
+        else{
+            struct node *p=start;
+            while(p->link!=NULL){
+                p=p->link;
+            }
+            p->link=temp;
+        }
+    }
+    print(start);
+}
