@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int info;
+    struct node *link;
+    
+};
+void input(struct node *ptr){
+    printf("Enter Element:\n");
+    while(ptr!=NULL){
+        scanf("%d",&ptr->info);
+        ptr=ptr->link;
+    }
+}
+
+int main(){
+    struct node n1,n2,n3;
+    struct node *start=&n1;
+    n1.link=&n2;
+    n2.link=&n3;
+    n3.link=NULL;
+    input(start);
+    printf("%d\n",n1.info);
+    printf("%d\n",n2.info);
+    printf("%d",n3.info);
+    return 0;
+}
