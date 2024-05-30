@@ -14,14 +14,16 @@ void input(struct node *ptr){
 }
 
 int main(){
-    struct node n1,n2,n3;
-    struct node *start=&n1;
-    n1.link=&n2;
-    n2.link=&n3;
-    n3.link=NULL;
+    struct node *n1=(struct node *)malloc(sizeof(struct node));
+    struct node *n2=(struct node *)malloc(sizeof(struct node));
+    struct node *n3=(struct node *)malloc(sizeof(struct node));
+    struct node *start=n1;
+    n1->link=n2;
+    n2->link=n3;
+    n3->link=NULL;
     input(start);
-    printf("%d\n",n1.info);
-    printf("%d\n",n2.info);
-    printf("%d",n3.info);
+    printf("%d\t",n1->info);
+    printf("%d\t",n2->info);
+    printf("%d",n3->info);
     return 0;
 }
