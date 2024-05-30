@@ -39,4 +39,11 @@ void main(){
         }
     }
     print(start);
+    struct node *current = start;
+    struct node *next;
+    while (current != NULL) {
+        next = current->link;
+        free(current);
+        current = next;
+    }
 }
