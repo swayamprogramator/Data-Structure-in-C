@@ -1,0 +1,32 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int info;
+    struct node *link;
+    
+};
+void print(struct node *ptr){
+    while(ptr!=NULL){
+        printf("%d\t",ptr->info);
+        ptr=ptr->link;
+    }
+}
+void input(struct node *ptr){
+    while(ptr!=NULL){
+        scanf("%d",&ptr->info);
+        ptr=ptr->link;
+    }
+}
+
+int main(){
+    struct node n1,n2,n3;
+    struct node *start=&n1;
+    n1.link=&n2;
+    n2.link=&n3;
+    n3.link=NULL;
+    printf("Enter Element:\n");
+    input(start);
+    print(start);
+    return 0;
+}
