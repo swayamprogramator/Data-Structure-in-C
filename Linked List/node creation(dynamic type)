@@ -1,1 +1,25 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int info;
+    struct node *link;
+    
+};
 
+
+int main(){
+    struct node *n1=(struct node *)malloc(sizeof(struct node));
+    struct node *n2=(struct node *)malloc(sizeof(struct node));
+    struct node *n3=(struct node *)malloc(sizeof(struct node));
+    struct node *start=n1;
+    n1->link=n2;
+    n2->link=n3;
+    n3->link=NULL;
+    n1->info=10;
+    n2->info=20;
+    n3->info=30;
+    printf("%d\n",n1->info);
+    printf("%d\n",n2->info);
+    printf("%d",n3->info);
+    return 0;
+}
