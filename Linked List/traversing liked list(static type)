@@ -6,6 +6,7 @@ struct node{
     struct node *link;
     
 };
+//Traversing
 void print(struct node *ptr){
     while(ptr!=NULL){
         printf("%d\t",ptr->info);
