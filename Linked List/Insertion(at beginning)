@@ -66,3 +66,66 @@ int main() {
 
     return 0;
 }
+
+
+OR(Without Function)
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int info;
+    struct node *link;
+};
+
+// Traversing
+int print(struct node *ptr) {
+    while (ptr != NULL) {
+        printf("%d\t", ptr->info);
+        ptr = ptr->link;
+    }
+    printf("\n");
+}
+
+int main() {
+    int n;
+    printf("Enter number of nodes you want: ");
+    scanf("%d", &n);
+
+    struct node *start = NULL;
+    struct node *temp = NULL;
+
+    for (int i = 0; i < n; i++) {
+        temp = (struct node *)malloc(sizeof(struct node));
+        scanf("%d", &temp->info);
+        temp->link = NULL;
+
+        if (start == NULL) {
+            start = temp;
+        } else {
+            struct node *p = start;
+            while (p->link != NULL) {
+                p = p->link;
+            }
+            p->link = temp;
+        }
+    }
+
+    //Insrting new element at start
+    struct node *new = (struct node *)malloc(sizeof(struct node));
+    printf("Enter new element to insert at beginning: ");
+    scanf("%d", &new->info);
+    new->link = start;
+    start = new;
+    print(start);
+
+    
+    struct node *current = start;
+    struct node *next;
+    while (current != NULL) {
+        next = current->link;
+        free(current);
+        current = next;
+    }
+
+    return 0;
+}
