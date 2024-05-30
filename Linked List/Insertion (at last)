@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int info;
+    struct node *link;
+};
+
+// Traversing
+int print(struct node *ptr) {
+    while (ptr != NULL) {
+        printf("%d\t", ptr->info);
+        ptr = ptr->link;
+    }
+    printf("\n");
+}
+
+// Function to insert an element at the lasr of the list
+
+void insert_last(struct node *start) {
+    struct node *new = (struct node *)malloc(sizeof(struct node));
+    struct node *p=start;
+        while(p->link!=NULL){
+            p=p->link;
+        }
+    printf("Enter new element to insert at last: ");
+    scanf("%d", &new->info);
+    p->link=new;
+    new->link=NULL;
+}
+
+int main() {
+    int n;
+    printf("Enter number of nodes you want: ");
+    scanf("%d", &n);
+
+    struct node *start = NULL;
+    struct node *temp = NULL;
+
+    for (int i = 0; i < n; i++) {
+        temp = (struct node *)malloc(sizeof(struct node));
+        scanf("%d", &temp->info);
+        temp->link = NULL;
+
+        if (start == NULL) {
+            start = temp;
+        } else {
+            struct node *p = start;
+            while (p->link != NULL) {
+                p = p->link;
+            }
+            p->link = temp;
+        }
+    }
+    
+    insert_last(start); 
+    print(start);
+
+    
+    struct node *current = start;
+    struct node *next;
+    while (current != NULL) {
+        next = current->link;
+        free(current);
+        current = next;
+    }
+
+    return 0;
+}
