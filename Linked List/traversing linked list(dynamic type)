@@ -28,8 +28,11 @@ int main(){
     n1->link=n2;
     n2->link=n3;
     n3->link=NULL;
-    printf("Enter Element:\n");
+    printf("Enter 3 Element:\n");
     input(start);
     print(start);
+    free(n1);
+    free(n2);
+    free(n3);
     return 0;
 }
