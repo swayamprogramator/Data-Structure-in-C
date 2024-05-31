@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int info;
+    struct node *link;
+};
+
+// Traversing
+int print(struct node *ptr) {
+    while (ptr != NULL) {
+        printf("%d\t", ptr->info);
+        ptr = ptr->link;
+    }
+    printf("\n");
+}
+
+void insert_between(struct node **start){
+    int l,r;
+    printf("Enter position of node left and then right to insert element:");
+    scanf("%d%d",&l,&r);
+    struct node *left=*start;
+    struct node *right=*start;
+    int a=1;
+    int b=1;
+    while(a<l){
+        left=left->link;
+        a+=1;
+    }
+    while(b<r){
+        right=right->link;
+        b+=1;
+    }
+    struct node *new = (struct node *)malloc(sizeof(struct node));
+    printf("Enter new element to insert in between %d and %d: ",l,r);
+    scanf("%d", &new->info);
+    left->link=new;
+    new->link=right;
+}
+
+int main() {
+    int n;
+    printf("Enter number of nodes you want: ");
+    scanf("%d", &n);
+
+    struct node *start = NULL;
+    struct node *temp = NULL;
+
+    for (int i = 0; i < n; i++) {
+        temp = (struct node *)malloc(sizeof(struct node));
+        printf("Enter info part of node %d:",i+1);
+        scanf("%d", &temp->info);
+        temp->link = NULL;
+
+        if (start == NULL) {
+            start = temp;
+        } else {
+            struct node *p = start;
+            while (p->link != NULL) {
+                p = p->link;
+            }
+            p->link = temp;
+        }
+    }
+    insert_between(&start);
+    print(start);
+
+    
+    struct node *current = start;
+    struct node *next;
+    while (current != NULL) {
+        next = current->link;
+        free(current);
+        current = next;
+    }
+
+    return 0;
+}
