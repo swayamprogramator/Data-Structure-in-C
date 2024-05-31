@@ -1,1 +1,115 @@
+#include <stdio.h>
+#include <stdlib.h>
 
+struct node {
+    int info;
+    struct node *link;
+};
+
+// Traversing
+int print(struct node *ptr) {
+    while (ptr != NULL) {
+        printf("%d\t", ptr->info);
+        ptr = ptr->link;
+    }
+    printf("\n");
+}
+
+// Function to insert an element at the beginning of the list
+void insert_beg(struct node **start) {
+    struct node *new = (struct node *)malloc(sizeof(struct node));
+    printf("Enter new element to insert at beginning: ");
+    scanf("%d", &new->info);
+    new->link = *start;
+    *start = new;
+}
+
+void insert_between(struct node **start){
+    int l;
+    printf("Enter position of node after you want to insert:");
+    scanf("%d",&l);
+    struct node *left=*start;
+    int a=1;
+    while(a<l){
+        left=left->link;
+        a+=1;
+    }
+    struct node *new = (struct node *)malloc(sizeof(struct node));
+    printf("Enter new element to insert after %d : ",l);
+    scanf("%d", &new->info);
+    
+    new->link=left->link;
+    left->link=new;
+}
+
+void insert_last(struct node **start) {
+    struct node *new = (struct node *)malloc(sizeof(struct node));
+    struct node *p=*start;
+        while(p->link!=NULL){
+            p=p->link;
+        }
+    printf("Enter new element to insert at last: ");
+    scanf("%d", &new->info);
+    p->link=new;
+    new->link=NULL;
+}
+
+int main() {
+    int n;
+    printf("Enter number of nodes you want: ");
+    scanf("%d", &n);
+
+    struct node *start = NULL;
+    struct node *temp = NULL;
+
+    for (int i = 0; i < n; i++) {
+        temp = (struct node *)malloc(sizeof(struct node));
+        printf("Enter info part of node %d:",i+1);
+        scanf("%d", &temp->info);
+        temp->link = NULL;
+
+        if (start == NULL) {
+            start = temp;
+        } else {
+            struct node *p = start;
+            while (p->link != NULL) {
+                p = p->link;
+            }
+            p->link = temp;
+        }
+    }
+    printf("Chose Operation\n1.Inserting node at begining\n2.Inserting node at last\n3.Inserting node between two node\n Enter:");
+    int ch;
+    scanf("%d",&ch);
+    switch (ch)
+    {
+    case 1:
+    
+        insert_beg(&start);
+        break;
+    
+    case 2:
+        insert_last(&start);
+        break;
+    
+    case 3:
+        insert_between(&start);
+        break;
+    
+    default:
+        printf("Invalid Input!!");
+        break;
+    }
+    print(start);
+
+    
+    struct node *current = start;
+    struct node *next;
+    while (current != NULL) {
+        next = current->link;
+        free(current);
+        current = next;
+    }
+
+    return 0;
+}
