@@ -25,7 +25,7 @@ void countsort(int arr[],int n){
     for(int i=n-1;i>=0;i--){
         output[--count[arr[i]]]=arr[i];
     }
-    string sorted sequence in main array
+    //storing sorted sequence in main array
     for(int i=0;i<n;i++){
         arr[i]=output[i];
     }
